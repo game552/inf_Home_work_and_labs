@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <iostream>
+#include <math.h>
+
+void Home_work_task1_part3() {
+	double eps, s, sign = 1, m;
+	int x = 2, n = 1, iter;
+	puts("Input epsilon");
+	scanf_s("%lf", &eps);
+	iter = 1;
+	s = 0;
+	do {
+		m = (sign * (sin(n * x))) / n;
+		sign = -sign;
+		s += m;
+		iter++;
+		n++;
+	} while (fabs(m) > eps);
+	printf("Row sum = %20.16lf  kol_iter=%6d\n", s, iter);
+	printf("RToch = 1\n");
+
+
+}
+
+void Home_work_task1_part2() {
+	double y, w, x, s1, s2, max, res;
+	puts("task2 double:");
+	puts("Input x, y, w");
+	scanf_s("%lf %lf %lf", &x, &y, &w);
+	printf("Inputed x=%6.2lf   y=%6.2lf   w=%6.2lf\n", x, y, w);
+	s1 = y + w;
+	s2 = y - w;
+	if ((s1 > s2) && (s1 > x)) {
+		max = s1;
+		printf("max: y + w = %7.3lf\n", max);
+	}
+	else {
+		puts("s1 <= s2 or s1 <=p1");
+		if ((s2 > s1) && (s2 > x)) {
+			max = s2;
+			printf("max: y - w = %7.3lf\n", max);
+		}
+		else {
+			puts("s2 <= s1 or s2 <= p1");
+			if ((x > s1) && (x > s2)) {
+				max = x;
+				printf("max: x = %7.3lf\n", max);
+			}
+			else {
+				puts("x <= s1 or x <= s2");
+				max = 0;
+				puts("There is no absolute maximum");
+			}
+		}
+	}
+	res = (max * max) - ((y * y * y) * w);
+	printf("(max ^ 2) - (y ^ 3) * w = %20.16lf\n", res);
+	printf("\n");
+}
+
+
+void Home_work_task1_part1() {
+	float x, y;
+	puts("Input x");
+	scanf_s("%f", &x);
+	y = (-1 * (sqrt(fabs(cos(5 * x))))) / ((x * x) + 1);
+	printf("%20.16f\n", y);
+}
+
+
+int main() {
+	Home_work_task1_part2();
+	return 0;
+}

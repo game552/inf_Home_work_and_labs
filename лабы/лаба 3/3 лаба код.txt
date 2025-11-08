@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <iostream>
+#include <math.h>
+
+
+
+void lab_3_part1() {
+	long x;
+	puts("input x");
+	scanf_s("%ld", &x);
+	long rev = 0;
+	for (; x > 0; x = x / 10) {
+		rev = rev * 10 + (x % 10);
+	}
+	printf("%d\n", rev);
+}
+
+void lab_3_part2() {
+	long x;
+	puts("input x");
+	scanf_s("%d", &x);
+	long rev = 0;
+	while (x > 0) {
+		rev = rev * 10 + (x % 10);
+		x /= 10;
+	}
+	printf("%d\n", rev);
+}
+
+void lab_3_part3(){
+	long x;
+	puts("input x");
+	scanf_s("%ld", &x);
+	int rev = 0;
+	do {
+		rev = rev * 10 + (x % 10);
+		x /= 10;
+	} while (x > 0);
+	printf("%d\n", rev);
+}
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	lab_3_part2();
+	return 0;
+}

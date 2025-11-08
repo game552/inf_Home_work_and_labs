@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <iostream>
+
+int test() {
+	float x, float y;
+	puts("input x, y");
+	scanf_s("%f %f", &x, &y);
+	if (y >= x - 1)
+		if (y >= -x - 1)
+			if (y <= x + 1)
+				if (y <= -x + 1)
+					printf("точка (%f, %f) входит в искомую область\n", x, y);
+				else
+					printf("точка (%f, %f) не входит в искомую область, потому что y > -x + 1\n", x, y);
+			else
+				printf("точка (%f, %f) не входит в искомую область, потому что y > x + 1\n", x, y);
+		else
+			printf("точка (%f, %f) не входит в искомую область, потому что y < -x -1\n", x, y);
+	else
+		printf("точка (%f, %f) не входит в искомую область, потому что y < x - 1\n", x, y);
+
+	return 0;
+}
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	test();
+}
+
