@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+void shaker_sort(int arr[], int n) {
+    int left = 0;
+    int right = n - 1;
+    int swapped = 1;
+
+    while (left < right&& swapped) {
+        swapped = 0;
+        for (int i = left; i < right; i++) {
+            if (arr[i] > arr[i + 1]) {
+                int temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = 1;
+            }
+        }
+        right--;
+        for (int i = right; i > left; i--) {
+            if (arr[i] < arr[i - 1]) {
+                int temp = arr[i];
+                arr[i] = arr[i - 1];
+                arr[i - 1] = temp;
+                swapped = 1;
+            }
+        }
+        left++;
+    }
+}
+int first_task() {
+    int n;
+    printf("Input array size: ");
+    if (scanf_s("%d", &n) != 1 || n <= 0) {
+        printf("Invalid array size\n");
+        return 1;
+    }
+    int* arr_i = (int*)malloc(n * sizeof(int));
+    if (arr_i == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+
+    for (int i = 0; i < n; i++) {
+        printf("Input digit for position %d: ", i);
+        if (scanf_s("%d", &arr_i[i]) != 1) {
+            printf("Invalid input\n");
+            free(arr_i);
+            return 1;
+        }
+    }
+    shaker_sort(arr_i, n);
+
+    printf("Array elements: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr_i[i]);
+    }
+    printf("\n");
+
+    free(arr_i);
+    return 0;
+}

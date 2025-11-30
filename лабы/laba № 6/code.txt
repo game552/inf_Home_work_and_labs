@@ -1,0 +1,105 @@
+ #include <stdio.h>
+#include <stdlib.h>
+
+void Sort_by_sr(int a[10][10], int n, int m) {
+    float s = 0;
+    float sr[10];
+    for (int i = 0; i < n; i++) {
+        s = 0;
+        for (int j = 0; j < m; j++) {
+            s += a[i][j];
+        }
+        sr[i] = s / m;
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            if (sr[j] < sr[i]) {
+                float tmp = sr[i];
+                sr[i] = sr[j];
+                sr[j] = tmp;
+                for (int k = 0; k < m; k++) {
+                    int tmp_a = a[i][k];
+                    a[i][k] = a[j][k];
+                    a[j][k] = tmp_a;
+                }
+            }
+        }
+    }
+}
+
+int main() {
+    int n, m;
+    printf("Input n, m: \n");
+    scanf_s("%d", &n);
+    scanf_s("%d", &m);
+
+    int a[10][10];
+    int original[10][10];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            a[i][j] = rand() % 100;
+            original[i][j] = a[i][j];
+        }
+    }
+
+    printf("\nORIGINAL ARRAY:\n");
+
+    for (int j = 0; j < m; j++) {
+        printf("+-------");
+    }
+    printf("+\n");
+
+    for (int i = 0; i < n; i++) {
+        printf("|");
+        for (int j = 0; j < m; j++) {
+            printf(" %-5d |", original[i][j]);
+        }
+        printf("\n");
+
+
+        if (i < n - 1) {
+            for (int j = 0; j < m; j++) {
+                printf("+-------");
+            }
+            printf("+\n");
+        }
+    }
+
+    for (int j = 0; j < m; j++) {
+        printf("+-------");
+    }
+    printf("+\n");
+
+
+    Sort_by_sr(a, n, m);
+
+    printf("\nARRAY SORTED BY AVERAGE:\n");
+    for (int j = 0; j < m; j++) {
+        printf("+-------");
+    }
+    printf("+\n");
+
+    for (int i = 0; i < n; i++) {
+        printf("|");
+        for (int j = 0; j < m; j++) {
+            printf(" %-5d |", a[i][j]);
+        }
+        printf("\n");
+
+        if (i < n - 1) {
+            for (int j = 0; j < m; j++) {
+                printf("+-------");
+            }
+            printf("+\n");
+        }
+    }
+
+    for (int j = 0; j < m; j++) {
+        printf("+-------");
+    }
+    printf("+\n");
+
+
+    return 0;
+}
