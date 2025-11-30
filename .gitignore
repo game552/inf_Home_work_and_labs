@@ -1,0 +1,19 @@
+# VS Code settings
+.vscode/
+
+# Build files
+build/
+
+# Compiled executables
+*.exe
+*.o
+*.a
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# System files
+.DS_Store
+Thumbs.db
