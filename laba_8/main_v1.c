@@ -15,12 +15,12 @@ int main(void) {
     int last_negative_index = -1;   
     int index = 0;                   
 
-    printf("Enter a sequence of integers (Ctrl+Z to end):\n");
+    printf("Enter a sequence of integers (Ctrl+D to end):\n");
     printf("-> ");
 
     while (scanf("%d", &number) == 1) {
 
-        if (!  queue_enqueue(qu, number)) {
+        if (!queue_enqueue(qu, number)) {
             fprintf(stderr, "Error: failed to add element\n");
             queue_destroy(qu);
             return 1;
