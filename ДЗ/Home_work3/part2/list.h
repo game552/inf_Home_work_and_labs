@@ -28,6 +28,8 @@ void list_prepend(DoublyLinkedList *list, const char *data);
 
 void list_insert_at(DoublyLinkedList *list, int index, const char *data);
 
+void list_insert_sorted(DoublyLinkedList *list, const char *data);
+
 void list_remove_at(DoublyLinkedList *list, int index);
 
 char* list_get(DoublyLinkedList *list, int index);

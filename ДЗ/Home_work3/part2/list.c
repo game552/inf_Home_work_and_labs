@@ -225,3 +225,41 @@ int list_find(DoublyLinkedList* list, const char* data) {
     }
     return -1;
 }
+
+void list_insert_sorted(DoublyLinkedList* list, const char* data) {
+    if (list == NULL) return;
+
+    Node* new_node = node_create(data);
+    if (new_node == NULL) return;
+
+    if (list->head == NULL) {
+        list->head = new_node;
+        list->tail = new_node;
+        list->size++;
+        return;
+    }
+
+    Node* current = list->head;
+    while (current != NULL && strcmp(current->data, data) <= 0) {
+        current = current->next;
+    }
+
+    if (current == list->head) {
+        new_node->next = list->head;
+        list->head->prev = new_node;
+        list->head = new_node;
+    }
+    else if (current == NULL) {
+        new_node->prev = list->tail;
+        list->tail->next = new_node;
+        list->tail = new_node;
+    }
+    else {
+        new_node->next = current;
+        new_node->prev = current->prev;
+        current->prev->next = new_node;
+        current->prev = new_node;
+    }
+
+    list->size++;
+}
