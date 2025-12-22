@@ -21,11 +21,12 @@ int main() {
     setlocale(LC_ALL, "ru");
     char text[1024];
 
-    printf("Введите строку: ");
+    printf("Enter a string: ");
     if (fgets(text, sizeof(text), stdin) == NULL) {
-            printf("Ошибка ввода.\n");
-            return 1;
-        }
+        printf("Input error.\n");
+        return 1;
+    }
+
     int i = 0;
     int count = 0;
     while (text[i] != '\0') {
@@ -44,7 +45,8 @@ int main() {
             count++;
         }
     }
-    printf("Колличесвто слов начинающихся на K кончающихся на B: ");
-    printf("%d", count);
+
+    printf("Number of words starting with 'B' and ending with 'K': ");
+    printf("%d\n", count);
     return 0;
 }

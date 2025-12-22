@@ -2,11 +2,10 @@
 #include <locale.h>
 
 void print_float_mass(float* matrix, int rows) {
-    printf("mass size = %d:\n", rows);
+    printf("Array size = %d:\n", rows);
     for (int i = 0; i < rows; i++) {
         printf("%8.2f ", matrix[i]);
     }
-
     printf("\n");
 }
 
@@ -34,19 +33,19 @@ int main() {
     float A[10];
     int i1, i2, i3;
 
-    printf("Введите 10 вещественных чисел массива A:\n");
+    printf("Enter 10 floating-point numbers for array A:\n");
     for (int i = 0; i < N; i++) {
         printf("A[%d] = ", i);
         if (scanf_s("%f", &A[i]) != 1) {
-            printf("Некорректный ввод.\n");
+            printf("Invalid input.\n");
             return 1;
         }
     }
 
-    printf("Введите три индекса (0–9): ");
+    printf("Enter three indices (0–9): ");
     if (scanf_s("%d %d %d", &i1, &i2, &i3) != 3 ||
         i1 < 0 || i1 >= N || i2 < 0 || i2 >= N || i3 < 0 || i3 >= N) {
-        printf("Ошибка: некорректные индексы!\n");
+        printf("Error: invalid indices!\n");
         return 1;
     }
 
@@ -58,14 +57,14 @@ int main() {
         int idx = indexes[k];
         find_elements(A, idx, result, &result_size);
 
-        printf("\nИндекс %d (A[%d] = %.2f):\n", idx, idx, A[idx]);
+        printf("\nIndex %d (A[%d] = %.2f):\n", idx, idx, A[idx]);
 
         if (result_size == 0) {
-            printf("Нет элементов больше A[%d].\n", idx);
+            printf("No elements greater than A[%d].\n", idx);
         }
         else {
             print_float_mass(result, result_size);
-            printf("Сумма этих элементов = %.2f\n", sum_arr(result, result_size));
+            printf("Sum of these elements = %.2f\n", sum_arr(result, result_size));
         }
     }
 

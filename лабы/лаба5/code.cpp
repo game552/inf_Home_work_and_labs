@@ -42,7 +42,10 @@ int main(void) {
     int n;
 
     printf("Input n: \n");
-    scanf_s("%d", &n);
+    if (scanf_s("%d", &n) != 1 || n <= 0 || n > 10) {
+        printf("Input error.\n");
+        return 1;
+    }
 
     float arr[10][10];
     double sr_ar = 0;
@@ -50,7 +53,7 @@ int main(void) {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            arr[i][j] = rand(); // замени на sacanf_s для нормальной программы
+            arr[i][j] = rand();
             sr_ar += arr[i][j];
         }
     }

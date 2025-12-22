@@ -1,25 +1,5 @@
-#include <stdio.h>
-#include <math.h>
+#include "INTRPG.h"
 
-double funck1(double x) {
-    return x * (x - 1);
-}
-
-double funck2(double x) {
-    return exp(x) / x;
-}
-
-double INTPRG(double a, double b, int n, double (*func)(double)) {
-    double res  = 0.0;
-    double size = (b - a) / n;
-
-    for (int i = 1; i <= n; i++) {
-        double x = a + i * size;
-        res += func(x);
-    }
-
-    return res * size;
-}
 
 int main() {
     int n;
@@ -30,8 +10,8 @@ int main() {
         return 1;
     }
 
-    double approx1 = INTPRG(0, 2, n, funck1);
-    double approx2 = INTPRG(1, 2, n, funck2);
+    double approx1 = INTPRG(0, 2, n, func1);
+    double approx2 = INTPRG(1, 2, n, func2);
 
     double exact1 = 2.0 / 3.0;
     double exact2 = 3.0591165;
